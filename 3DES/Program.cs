@@ -44,10 +44,13 @@ namespace _3DES
 				stopwatch.Stop();
 
 				int totalTime = encryptionTime + decryptionTime;
-
+				Console.WriteLine("");
 				Console.WriteLine("Original: {0}", original);
+				Console.WriteLine("");
 				Console.WriteLine("Encrypted: {0}", Encoding.UTF8.GetString(encrypted));
+				Console.WriteLine("");
 				Console.WriteLine("Decrypted: {0}", decrypted);
+				Console.WriteLine("");
 				Console.WriteLine("Encryption time: {0} ms", encryptionTime);
 				Console.WriteLine("Decryption time: {0} ms", decryptionTime);
 				Console.WriteLine("Total time: {0} ms", totalTime);
