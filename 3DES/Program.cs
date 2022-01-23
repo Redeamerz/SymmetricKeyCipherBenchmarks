@@ -18,17 +18,24 @@ namespace _3DES
 
 			using (TripleDES tdes = TripleDES.Create())
 			{
-
+				byte[] encrypted = null;
 				stopwatch.Start();
-				byte[] encrypted = EncryptStringToBytes_3DES(original, tdes.Key, tdes.IV);
+				for (int i = 0; i < 1000000; i++)
+				{
+					encrypted = EncryptStringToBytes_3DES(original, tdes.Key, tdes.IV);
+				}
 				currentProcess.Refresh();
 				Console.WriteLine("Encryption memory used: {0}", currentProcess.WorkingSet64 / (1024 * 1024));
 
 				int encryptionTime = (int)stopwatch.ElapsedMilliseconds;
 				stopwatch.Reset();
+				string decrypted = null;
 				stopwatch.Start();
 
-				string decrypted = DecryptStringToBytes_3DES(encrypted, tdes.Key, tdes.IV);
+				for (int i = 0; i < 1000000; i++)
+				{
+					decrypted = DecryptStringToBytes_3DES(encrypted, tdes.Key, tdes.IV);
+				}
 				currentProcess.Refresh();
 				Console.WriteLine("Encryption memory used: {0}", currentProcess.WorkingSet64 / (1024 * 1024));
 

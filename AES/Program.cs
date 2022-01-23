@@ -20,8 +20,12 @@ namespace AES
 			{
 				aes.Mode = CipherMode.CBC;
 				stopwatch.Start();
+				byte[] encrypted = null;
 				// Encrypt string to array of bytes
-				byte[] encrypted = EncryptStringToBytes_Aes(original, aes.Key, aes.IV);
+				for (int i = 0; i < 1000000; i++)
+				{
+					encrypted = EncryptStringToBytes_Aes(original, aes.Key, aes.IV);
+				}
 				currentProcess.Refresh();
 				Console.WriteLine("Encryption memory used: {0}", currentProcess.WorkingSet64 / (1024 * 1024));
 
@@ -29,9 +33,12 @@ namespace AES
 
 				stopwatch.Reset();
 				stopwatch.Start();
-
+				string decrypted = null;
 				// Decrypt bytes to string
-				string decrypted = DecryptStringFromBytes_Aes(encrypted, aes.Key, aes.IV);
+				for (int i = 0; i < 1000000; i++)
+				{
+					decrypted = DecryptStringFromBytes_Aes(encrypted, aes.Key, aes.IV);
+				}
 				currentProcess.Refresh();
 				Console.WriteLine("Encryption memory used: {0}", currentProcess.WorkingSet64 / (1024 * 1024));
 
