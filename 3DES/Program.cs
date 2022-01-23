@@ -25,7 +25,7 @@ namespace _3DES
 					encrypted = EncryptStringToBytes_3DES(original, tdes.Key, tdes.IV);
 				}
 				currentProcess.Refresh();
-				Console.WriteLine("Encryption memory used: {0}", currentProcess.WorkingSet64 / (1024 * 1024));
+				Console.WriteLine("Encryption memory used: {0}MB", currentProcess.PrivateMemorySize64 / (1024 * 1024));
 
 				int encryptionTime = (int)stopwatch.ElapsedMilliseconds;
 				stopwatch.Reset();
@@ -37,7 +37,7 @@ namespace _3DES
 					decrypted = DecryptStringToBytes_3DES(encrypted, tdes.Key, tdes.IV);
 				}
 				currentProcess.Refresh();
-				Console.WriteLine("Encryption memory used: {0}", currentProcess.WorkingSet64 / (1024 * 1024));
+				Console.WriteLine("Encryption memory used: {0}MB", currentProcess.PrivateMemorySize64 / (1024 * 1024));
 
 				int decryptionTime = (int)stopwatch.ElapsedMilliseconds;
 

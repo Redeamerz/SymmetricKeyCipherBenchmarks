@@ -27,7 +27,7 @@ namespace AES
 					encrypted = EncryptStringToBytes_Aes(original, aes.Key, aes.IV);
 				}
 				currentProcess.Refresh();
-				Console.WriteLine("Encryption memory used: {0}", currentProcess.WorkingSet64 / (1024 * 1024));
+				Console.WriteLine("Encryption memory used: {0}MB", currentProcess.PrivateMemorySize64 / (1024 * 1024));
 
 				int encryptionTime = (int)stopwatch.ElapsedMilliseconds;
 
@@ -40,7 +40,7 @@ namespace AES
 					decrypted = DecryptStringFromBytes_Aes(encrypted, aes.Key, aes.IV);
 				}
 				currentProcess.Refresh();
-				Console.WriteLine("Encryption memory used: {0}", currentProcess.WorkingSet64 / (1024 * 1024));
+				Console.WriteLine("Encryption memory used: {0}MB", currentProcess.PrivateMemorySize64 / (1024 * 1024));
 
 				stopwatch.Stop();
 
