@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace AES
 {
@@ -13,12 +14,16 @@ namespace AES
 
 			Stopwatch stopwatch = new Stopwatch();
 
+			Process currentProcess = Process.GetCurrentProcess();
+
 			using (Aes aes = Aes.Create())
 			{
 				aes.Mode = CipherMode.CBC;
 				stopwatch.Start();
 				// Encrypt string to array of bytes
 				byte[] encrypted = EncryptStringToBytes_Aes(original, aes.Key, aes.IV);
+				currentProcess.Refresh();
+				Console.WriteLine("Encryption memory used: {0}", currentProcess.WorkingSet64 / (1024 * 1024));
 
 				int encryptionTime = (int)stopwatch.ElapsedMilliseconds;
 
@@ -27,6 +32,8 @@ namespace AES
 
 				// Decrypt bytes to string
 				string decrypted = DecryptStringFromBytes_Aes(encrypted, aes.Key, aes.IV);
+				currentProcess.Refresh();
+				Console.WriteLine("Encryption memory used: {0}", currentProcess.WorkingSet64 / (1024 * 1024));
 
 				stopwatch.Stop();
 
@@ -35,7 +42,7 @@ namespace AES
 				int totalTime = encryptionTime + decryptionTime;
 
 				Console.WriteLine("Original: {0}", original);
-				Console.WriteLine("Encrypted: {0}", encrypted.ToString());
+				Console.WriteLine("Encrypted: {0}", Encoding.UTF8.GetString(encrypted));
 				Console.WriteLine("Decrypted: {0}", decrypted);
 				Console.WriteLine("Encryption time: {0} ms", encryptionTime);
 				Console.WriteLine("Decryption time: {0} ms", decryptionTime);
