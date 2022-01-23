@@ -22,7 +22,7 @@ namespace _3DES
 				float beginMemoryEncrytion = currentProcess.PrivateMemorySize64;
 				stopwatch.Start();
 
-				for (int i = 0; i < 1000000; i++)
+				for (int i = 0; i < 10000; i++)
 				{
 					encrypted = EncryptStringToBytes_3DES(original, tdes.Key, tdes.IV);
 				}
@@ -36,7 +36,7 @@ namespace _3DES
 				float beginMemoryDencrytion = currentProcess.PrivateMemorySize64;
 				stopwatch.Start();
 
-				for (int i = 0; i < 1000000; i++)
+				for (int i = 0; i < 10000; i++)
 				{
 					decrypted = DecryptStringToBytes_3DES(encrypted, tdes.Key, tdes.IV);
 				}

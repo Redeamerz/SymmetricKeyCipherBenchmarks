@@ -24,7 +24,7 @@ namespace AES
 				// Encrypt string to array of bytes
 				currentProcess.Refresh();
 				float beginMemoryEncrytion = currentProcess.PrivateMemorySize64;
-				for (int i = 0; i < 1000000; i++)
+				for (int i = 0; i < 10000; i++)
 				{
 					encrypted = EncryptStringToBytes_Aes(original, aes.Key, aes.IV);
 				}
@@ -40,7 +40,7 @@ namespace AES
 				// Decrypt bytes to string
 				currentProcess.Refresh();
 				float beginMemoryDencrytion = currentProcess.PrivateMemorySize64;
-				for (int i = 0; i < 1000000; i++)
+				for (int i = 0; i < 10000; i++)
 				{
 					decrypted = DecryptStringFromBytes_Aes(encrypted, aes.Key, aes.IV);
 				}

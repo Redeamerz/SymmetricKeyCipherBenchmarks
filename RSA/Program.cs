@@ -21,7 +21,7 @@ namespace RSACS
 				float beginMemoryEncrytion = currentProcess.PrivateMemorySize64;
 				stopwatch.Start();
 
-				for (int i = 0; i < 1000000; i++)
+				for (int i = 0; i < 10000; i++)
 				{
 					encrypted = EncryptStringToBytes_RSA(original, rsa.ExportParameters(false));
 				}
@@ -35,7 +35,7 @@ namespace RSACS
 				float beginMemoryDencrytion = currentProcess.PrivateMemorySize64;
 				stopwatch.Start();
 
-				for (int i = 0; i < 1000000; i++)
+				for (int i = 0; i < 10000; i++)
 				{
 					decrypted = DecryptStringToBytes_RSA(encrypted, rsa.ExportParameters(true));
 				}
