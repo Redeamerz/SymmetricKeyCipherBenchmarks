@@ -19,17 +19,21 @@ namespace _3DES
 			using (TripleDES tdes = TripleDES.Create())
 			{
 				byte[] encrypted = null;
+				float beginMemoryEncrytion = currentProcess.PrivateMemorySize64;
 				stopwatch.Start();
+				
 				for (int i = 0; i < 1000000; i++)
 				{
 					encrypted = EncryptStringToBytes_3DES(original, tdes.Key, tdes.IV);
 				}
 				currentProcess.Refresh();
-				Console.WriteLine("Encryption memory used: {0}MB", currentProcess.PrivateMemorySize64 / (1024 * 1024));
+				float endMemoryEncryption = currentProcess.PrivateMemorySize64;
+				Console.WriteLine("Encryption memory used: {0}KB", ((endMemoryEncryption - beginMemoryEncrytion) / 1000000).ToString("0.00"));
 
 				int encryptionTime = (int)stopwatch.ElapsedMilliseconds;
 				stopwatch.Reset();
 				string decrypted = null;
+				float beginMemoryDencrytion = currentProcess.PrivateMemorySize64;
 				stopwatch.Start();
 
 				for (int i = 0; i < 1000000; i++)
@@ -37,7 +41,8 @@ namespace _3DES
 					decrypted = DecryptStringToBytes_3DES(encrypted, tdes.Key, tdes.IV);
 				}
 				currentProcess.Refresh();
-				Console.WriteLine("Encryption memory used: {0}MB", currentProcess.PrivateMemorySize64 / (1024 * 1024));
+				float endMemoryDencryption = currentProcess.PrivateMemorySize64;
+				Console.WriteLine("Encryption memory used: {0}KB", ((endMemoryDencryption - beginMemoryDencrytion) / 1000000).ToString("0.00"));
 
 				int decryptionTime = (int)stopwatch.ElapsedMilliseconds;
 

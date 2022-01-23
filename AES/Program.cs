@@ -22,12 +22,15 @@ namespace AES
 				stopwatch.Start();
 				byte[] encrypted = null;
 				// Encrypt string to array of bytes
+				currentProcess.Refresh();
+				float beginMemoryEncrytion = currentProcess.PrivateMemorySize64;
 				for (int i = 0; i < 1000000; i++)
 				{
 					encrypted = EncryptStringToBytes_Aes(original, aes.Key, aes.IV);
 				}
 				currentProcess.Refresh();
-				Console.WriteLine("Encryption memory used: {0}MB", currentProcess.PrivateMemorySize64 / (1024 * 1024));
+				float endMemoryEncryption = currentProcess.PrivateMemorySize64;
+				Console.WriteLine("Encryption memory used: {0}KB", ((endMemoryEncryption - beginMemoryEncrytion) / 1000000).ToString("0.00"));
 
 				int encryptionTime = (int)stopwatch.ElapsedMilliseconds;
 
@@ -35,12 +38,15 @@ namespace AES
 				stopwatch.Start();
 				string decrypted = null;
 				// Decrypt bytes to string
+				currentProcess.Refresh();
+				float beginMemoryDencrytion = currentProcess.PrivateMemorySize64;
 				for (int i = 0; i < 1000000; i++)
 				{
 					decrypted = DecryptStringFromBytes_Aes(encrypted, aes.Key, aes.IV);
 				}
 				currentProcess.Refresh();
-				Console.WriteLine("Encryption memory used: {0}MB", currentProcess.PrivateMemorySize64 / (1024 * 1024));
+				float endMemoryDencryption = currentProcess.PrivateMemorySize64;
+				Console.WriteLine("Encryption memory used: {0}KB", ((endMemoryDencryption - beginMemoryDencrytion) / 1000000).ToString("0.00"));
 
 				stopwatch.Stop();
 
