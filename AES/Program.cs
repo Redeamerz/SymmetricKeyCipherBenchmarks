@@ -2,18 +2,17 @@
 using System.Diagnostics;
 using System.IO;
 using System.Security.Cryptography;
-using System.Threading;
 
 namespace AES
 {
-	class Program
+	internal class Program
 	{
-		static void Main(string[] args)
+		private static void Main(string[] args)
 		{
 			string original = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non placerat magna. Donec placerat ac urna id semper. Quisque at egestas quam.";
 
 			Stopwatch stopwatch = new Stopwatch();
-			
+
 			using (Aes aes = Aes.Create())
 			{
 				aes.Mode = CipherMode.CBC;
@@ -28,9 +27,9 @@ namespace AES
 
 				// Decrypt bytes to string
 				string decrypted = DecryptStringFromBytes_Aes(encrypted, aes.Key, aes.IV);
-				
+
 				stopwatch.Stop();
-				
+
 				int decryptionTime = (int)stopwatch.ElapsedMilliseconds;
 
 				int totalTime = encryptionTime + decryptionTime;
@@ -41,11 +40,10 @@ namespace AES
 				Console.WriteLine("Encryption time: {0} ms", encryptionTime);
 				Console.WriteLine("Decryption time: {0} ms", decryptionTime);
 				Console.WriteLine("Total time: {0} ms", totalTime);
-
 			}
 		}
 
-		static byte[] EncryptStringToBytes_Aes(string plainText, byte[] Key, byte[] IV)
+		private static byte[] EncryptStringToBytes_Aes(string plainText, byte[] Key, byte[] IV)
 		{
 			// Check parameters
 			if (plainText == null || plainText.Length <= 0)
@@ -54,7 +52,7 @@ namespace AES
 				throw new ArgumentNullException("Key");
 			if (IV == null || IV.Length <= 0)
 				throw new ArgumentNullException("IV");
-			
+
 			byte[] encrypted;
 
 			// Create Aes Object with specified key and IV
@@ -85,7 +83,7 @@ namespace AES
 			return encrypted;
 		}
 
-		static string DecryptStringFromBytes_Aes(byte[] cipherText, byte[] Key, byte[] IV)
+		private static string DecryptStringFromBytes_Aes(byte[] cipherText, byte[] Key, byte[] IV)
 		{
 			// Check arguments.
 			if (cipherText == null || cipherText.Length <= 0)
