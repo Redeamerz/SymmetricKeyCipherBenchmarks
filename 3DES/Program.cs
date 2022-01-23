@@ -21,7 +21,7 @@ namespace _3DES
 				byte[] encrypted = null;
 				float beginMemoryEncrytion = currentProcess.PrivateMemorySize64;
 				stopwatch.Start();
-				
+
 				for (int i = 0; i < 1000000; i++)
 				{
 					encrypted = EncryptStringToBytes_3DES(original, tdes.Key, tdes.IV);
@@ -62,7 +62,7 @@ namespace _3DES
 			}
 		}
 
-		static byte[] EncryptStringToBytes_3DES(string plainText, byte[] Key, byte[] IV)
+		private static byte[] EncryptStringToBytes_3DES(string plainText, byte[] Key, byte[] IV)
 		{
 			byte[] encrypted;
 
@@ -91,7 +91,7 @@ namespace _3DES
 			return encrypted;
 		}
 
-		static string DecryptStringToBytes_3DES(byte[] cipherText, byte[] Key, byte[] IV)
+		private static string DecryptStringToBytes_3DES(byte[] cipherText, byte[] Key, byte[] IV)
 		{
 			string plainText = null;
 
