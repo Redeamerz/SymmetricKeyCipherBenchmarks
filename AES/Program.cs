@@ -10,11 +10,38 @@ namespace AES
 	{
 		static void Main(string[] args)
 		{
-			string original = "Data to encrypt";
+			string original = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non placerat magna. Donec placerat ac urna id semper. Quisque at egestas quam.";
 
+			Stopwatch stopwatch = new Stopwatch();
+			
 			using (Aes aes = Aes.Create())
 			{
+				aes.Mode = CipherMode.CBC;
+				stopwatch.Start();
+				// Encrypt string to array of bytes
+				byte[] encrypted = EncryptStringToBytes_Aes(original, aes.Key, aes.IV);
+
+				int encryptionTime = (int)stopwatch.ElapsedMilliseconds;
+
+				stopwatch.Reset();
+				stopwatch.Start();
+
+				// Decrypt bytes to string
+				string decrypted = DecryptStringFromBytes_Aes(encrypted, aes.Key, aes.IV);
 				
+				stopwatch.Stop();
+				
+				int decryptionTime = (int)stopwatch.ElapsedMilliseconds;
+
+				int totalTime = encryptionTime + decryptionTime;
+
+				Console.WriteLine("Original: {0}", original);
+				Console.WriteLine("Encrypted: {0}", encrypted.ToString());
+				Console.WriteLine("Decrypted: {0}", decrypted);
+				Console.WriteLine("Encryption time: {0} ms", encryptionTime);
+				Console.WriteLine("Decryption time: {0} ms", decryptionTime);
+				Console.WriteLine("Total time: {0} ms", totalTime);
+
 			}
 		}
 
