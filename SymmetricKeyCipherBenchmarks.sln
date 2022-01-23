@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AES", "AES\AES.csproj", "{B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3DES", "3DES\3DES.csproj", "{91463CFA-F146-4726-BDBA-0427F6768F9B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blowfish", "Blowfish\Blowfish.csproj", "{7D67E0A5-55DD-422C-AFA0-9D181B1121D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{91463CFA-F146-4726-BDBA-0427F6768F9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91463CFA-F146-4726-BDBA-0427F6768F9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91463CFA-F146-4726-BDBA-0427F6768F9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D67E0A5-55DD-422C-AFA0-9D181B1121D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D67E0A5-55DD-422C-AFA0-9D181B1121D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D67E0A5-55DD-422C-AFA0-9D181B1121D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D67E0A5-55DD-422C-AFA0-9D181B1121D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
