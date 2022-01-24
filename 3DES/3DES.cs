@@ -64,6 +64,14 @@ namespace _3DES
 
 		public  static byte[] EncryptStringToBytes_3DES(string plainText, byte[] Key, byte[] IV)
 		{
+			// Check parameters
+			if (plainText == null || plainText.Length <= 0)
+				throw new ArgumentNullException("plainText");
+			if (Key == null || Key.Length <= 0)
+				throw new ArgumentNullException("Key");
+			if (IV == null || IV.Length <= 0)
+				throw new ArgumentNullException("IV");
+
 			byte[] encrypted;
 
 			// Create 3DES service provider

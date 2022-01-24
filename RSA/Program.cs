@@ -63,6 +63,10 @@ namespace RSACS
 
 		public static string EncryptStringToBytes_RSA(string plainText, RSAParameters Key)
 		{
+			// Check parameters
+			if (plainText == null || plainText.Length <= 0)
+				throw new ArgumentNullException("plainText");
+
 			string encrypted = null;
 
 			// Create RSA service provider
