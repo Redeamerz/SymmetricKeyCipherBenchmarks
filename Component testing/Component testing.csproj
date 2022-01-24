@@ -20,4 +20,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\3DES\3DES.csproj" />
+    <ProjectReference Include="..\AES\AES.csproj" />
+    <ProjectReference Include="..\RSA\RSA.csproj" />
+  </ItemGroup>
+
 </Project>

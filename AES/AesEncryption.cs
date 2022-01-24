@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AES
 {
-	internal class Program
+	public class AesEncryption
 	{
 		private static void Main(string[] args)
 		{
@@ -67,7 +67,7 @@ namespace AES
 			}
 		}
 
-		private static byte[] EncryptStringToBytes_Aes(string plainText, byte[] Key, byte[] IV)
+		public static byte[] EncryptStringToBytes_Aes(string plainText, byte[] Key, byte[] IV)
 		{
 			// Check parameters
 			if (plainText == null || plainText.Length <= 0)
@@ -107,7 +107,7 @@ namespace AES
 			return encrypted;
 		}
 
-		private static string DecryptStringFromBytes_Aes(byte[] cipherText, byte[] Key, byte[] IV)
+		public static string DecryptStringFromBytes_Aes(byte[] cipherText, byte[] Key, byte[] IV)
 		{
 			// Check arguments.
 			if (cipherText == null || cipherText.Length <= 0)

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace _3DES
 {
-	internal class Program
+	public class TDESEncryption
 	{
 		private static void Main(string[] args)
 		{
@@ -62,7 +62,7 @@ namespace _3DES
 			}
 		}
 
-		private static byte[] EncryptStringToBytes_3DES(string plainText, byte[] Key, byte[] IV)
+		public  static byte[] EncryptStringToBytes_3DES(string plainText, byte[] Key, byte[] IV)
 		{
 			byte[] encrypted;
 
@@ -91,7 +91,7 @@ namespace _3DES
 			return encrypted;
 		}
 
-		private static string DecryptStringToBytes_3DES(byte[] cipherText, byte[] Key, byte[] IV)
+		public static string DecryptStringToBytes_3DES(byte[] cipherText, byte[] Key, byte[] IV)
 		{
 			string plainText = null;
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RSACS
 {
-	class Program
+	public class RSAEncryption
 	{
 		static void Main(string[] args)
 		{
@@ -61,7 +61,7 @@ namespace RSACS
 			}
 		}
 
-		private static string EncryptStringToBytes_RSA(string plainText, RSAParameters Key)
+		public static string EncryptStringToBytes_RSA(string plainText, RSAParameters Key)
 		{
 			string encrypted = null;
 
@@ -77,7 +77,7 @@ namespace RSACS
 			return encrypted;
 		}
 
-		private static string DecryptStringToBytes_RSA(string cipherText, RSAParameters Key)
+		public static string DecryptStringToBytes_RSA(string cipherText, RSAParameters Key)
 		{
 			using (RSA rsa = RSA.Create())
 			{
