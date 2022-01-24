@@ -7,7 +7,7 @@ namespace RSACS
 {
 	public class RSAEncryption
 	{
-		static void Main(string[] args)
+		private static void Main(string[] args)
 		{
 			string original = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non placerat magna. Donec placerat ac urna id semper. Quisque at egestas quam.";
 
@@ -76,7 +76,6 @@ namespace RSACS
 				var byteData = Encoding.UTF8.GetBytes(plainText);
 				var encryptedData = rsa.Encrypt(byteData, RSAEncryptionPadding.OaepSHA256);
 				encrypted = Convert.ToBase64String(encryptedData);
-
 			}
 			return encrypted;
 		}

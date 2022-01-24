@@ -62,7 +62,7 @@ namespace _3DES
 			}
 		}
 
-		public  static byte[] EncryptStringToBytes_3DES(string plainText, byte[] Key, byte[] IV)
+		public static byte[] EncryptStringToBytes_3DES(string plainText, byte[] Key, byte[] IV)
 		{
 			// Check parameters
 			if (plainText == null || plainText.Length <= 0)
