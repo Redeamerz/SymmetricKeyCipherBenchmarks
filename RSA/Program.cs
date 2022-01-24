@@ -73,7 +73,7 @@ namespace RSACS
 			using (RSA rsa = RSA.Create())
 			{
 				rsa.ImportParameters(Key);
-				var byteData = Encoding.UTF8.GetBytes(plainText);
+				byte[] byteData = Encoding.UTF8.GetBytes(plainText);
 				var encryptedData = rsa.Encrypt(byteData, RSAEncryptionPadding.OaepSHA256);
 				encrypted = Convert.ToBase64String(encryptedData);
 			}

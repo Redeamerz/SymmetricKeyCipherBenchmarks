@@ -21,27 +21,33 @@ namespace AES
 				aes.Mode = CipherMode.CBC;
 				stopwatch.Start();
 				byte[] encrypted = null;
-				// Encrypt string to array of bytes
+				
 				currentProcess.Refresh();
 				float beginMemoryEncrytion = currentProcess.PrivateMemorySize64;
 				for (int i = 0; i < 10000; i++)
 				{
+					// Encrypt string to array of bytes
 					encrypted = EncryptStringToBytes_Aes(original, aes.Key, aes.IV);
 				}
+				
 				currentProcess.Refresh();
 				float endMemoryEncryption = currentProcess.PrivateMemorySize64;
+				
 				Console.WriteLine("Encryption memory used: {0}KB", ((endMemoryEncryption - beginMemoryEncrytion) / 1000000).ToString("0.00"));
 
 				int encryptionTime = (int)stopwatch.ElapsedMilliseconds;
 
 				stopwatch.Reset();
 				stopwatch.Start();
+				
 				string decrypted = null;
-				// Decrypt bytes to string
+				
+				
 				currentProcess.Refresh();
 				float beginMemoryDencrytion = currentProcess.PrivateMemorySize64;
 				for (int i = 0; i < 10000; i++)
 				{
+					// Decrypt bytes to string
 					decrypted = DecryptStringFromBytes_Aes(encrypted, aes.Key, aes.IV);
 				}
 				currentProcess.Refresh();
